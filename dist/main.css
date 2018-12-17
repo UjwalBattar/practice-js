@@ -17,3 +17,25 @@
     width: 200px;
     margin: 15% 21%;
 }
+
+.loading-bar {
+    height: 30px;
+    width: 300px;
+    border: 1px solid black;
+}
+
+.loading-bar-color {
+    animation: fill 3s linear;
+    height: 100%;
+    background-color: orange;
+}
+
+@keyframes fill {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}

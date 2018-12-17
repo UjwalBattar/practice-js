@@ -1,49 +1,64 @@
 document.addEventListener('click', (e) => {
-    // console.log(e.target.tagName === 'DIV');
-    if (e.target.tagName === 'DIV') {
-        alert(`Hi! I am: ${e.target.id}`);
-    }
+	// console.log(e.target.tagName === 'DIV');
+	if (e.target.tagName === 'DIV') {
+		alert(`Hi! I am: ${e.target.id}`);
+	}
 });
 
 let _loading = false;
 const loadingQueue = [];
 
-
 let progressBarContainer;
 
 function loadProgressBarsButton() {
-    const loadButton = document.createElement('BUTTON');
-    progressBarContainer.appendChild(loadButton);
-    loadButton.id = 'click-me';
-    loadButton.innerHTML = 'click me!';
-    loadButton.addEventListener('click', () => {
-        addBarToQueue();
-    });
+	const loadButton = document.createElement('BUTTON');
+	progressBarContainer.appendChild(loadButton);
+	loadButton.id = 'click-me';
+	loadButton.innerHTML = 'click me!';
+	loadButton.addEventListener('click', () => {
+		addBarToQueue(loading);
+	});
 }
 
-function addBarToQueue() {
-    if (!_loading) {
-        _loading = true;
-        loadingQueue.push(true);
-        initiateLoading();
-    } else {
-        loadingQueue.push(true);
-    }
+function addBarToQueue(func) {
+	if (!_loading) {
+		_loading = true;
+		loadingQueue.push(func);
+		initiateLoading();
+	} else {
+		console.log('hi');
+		loadingQueue.push(func);
+	}
 }
 
 function initiateLoading() {
-    while (loadingQueue.length > 0) {
-        console.log('hi');
-        // loadingQueue.pop();
-    }
-    _loading = false;
+	let func = loadingQueue.pop();
+	console.log(func);
+	let next = loadingQueue.pop();
+	func(next);
+	if (loadingQueue.length > 0) {
+		initiateLoading();
+	} else {
+		_loading = false;
+	}
+	console.log(loadingQueue);
 }
 
-// const loadingBar = document.createElement('DIV');
-// loadingBar.setAttribute('style', 'height: 30px');
-// loadingBar.setAttribute('style', 'height: 30px');
+function loading(next) {
+	const loadingBar = document.createElement('DIV');
+	loadingBar.classList.add('loading-bar');
+	const loadingColor = document.createElement('DIV');
+	progressBarContainer.appendChild(loadingBar);
+	loadingBar.appendChild(loadingColor);
+	loadingColor.classList.add('loading-bar-color');
+	if (next !== undefined) {
+		setTimeout(() => {
+			next();
+		}, 3000);
+	}
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    progressBarContainer = document.getElementById('progress-bar');
-    loadProgressBarsButton();
+	progressBarContainer = document.getElementById('progress-bar');
+	loadProgressBarsButton();
 });
