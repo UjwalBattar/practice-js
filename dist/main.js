@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("document.addEventListener('click', (e) => {\n    // console.log(e.target.tagName === 'DIV');\n    if (e.target.tagName === 'DIV') {\n        alert(`Hi! I am: ${e.target.id}`);\n    }\n});\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("document.addEventListener('click', (e) => {\n    // console.log(e.target.tagName === 'DIV');\n    if (e.target.tagName === 'DIV') {\n        alert(`Hi! I am: ${e.target.id}`);\n    }\n});\n\nlet _loading = false;\nconst loadingQueue = [];\n\n\nlet progressBarContainer;\n\nfunction loadProgressBarsButton() {\n    const loadButton = document.createElement('BUTTON');\n    progressBarContainer.appendChild(loadButton);\n    loadButton.id = 'click-me';\n    loadButton.innerHTML = 'click me!';\n    loadButton.addEventListener('click', () => {\n        addBarToQueue();\n    });\n}\n\nfunction addBarToQueue() {\n    if (!_loading) {\n        _loading = true;\n        loadingQueue.push(true);\n        initiateLoading();\n    } else {\n        loadingQueue.push(true);\n    }\n}\n\nfunction initiateLoading() {\n    while (loadingQueue.length > 0) {\n        console.log('hi');\n        // loadingQueue.pop();\n    }\n    _loading = false;\n}\n\n// const loadingBar = document.createElement('DIV');\n// loadingBar.setAttribute('style', 'height: 30px');\n// loadingBar.setAttribute('style', 'height: 30px');\n\ndocument.addEventListener('DOMContentLoaded', () => {\n    progressBarContainer = document.getElementById('progress-bar');\n    loadProgressBarsButton();\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
