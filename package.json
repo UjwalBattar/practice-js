@@ -1,0 +1,25 @@
+{
+  "name": "practice-js",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UjwalBattar/practice-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UjwalBattar/practice-js/issues"
+  },
+  "homepage": "https://github.com/UjwalBattar/practice-js#readme",
+  "devDependencies": {
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  }
+}

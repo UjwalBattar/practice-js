@@ -1,0 +1,19 @@
+#div-one {
+    background-color: green;
+    height: 500px;
+    width: 500px;
+}
+
+#div-two {
+    background-color: blue;
+    height: 350px;
+    width: 350px;
+    margin: 11% 14%;
+}
+
+#div-three {
+    background-color: orange;
+    height: 200px;
+    width: 200px;
+    margin: 15% 21%;
+}
